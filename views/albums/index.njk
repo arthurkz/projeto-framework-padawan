@@ -1,0 +1,36 @@
+{% extends "layout.njk" %}
+
+{% block content %}
+
+<div class="albums">
+    <div class="filter">
+        <form action="/albums" method="GET">
+            <input 
+                type="text"
+                name="filter"
+                placeholder="Filter by Albums's title"
+            >
+            <button type="submit">Filter</button>
+        </form>
+    </div>
+
+    <table id="albums_table" width="100%">
+        <thead>
+            <tr>
+                <th>Album's Title</th>  
+            </tr>
+        </thead>
+
+        <tbody>
+            {% for album in albums %}
+                <tr>
+                    <td>{{album.title}}</td>
+                </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</div>
+
+
+{% endblock content%}
+

@@ -1,0 +1,61 @@
+{% extends "layout.njk" %}
+
+{% block content %}
+
+<div class="todos">
+    <div class="todos_filter" >
+        <div class="chek">
+            <input 
+                type="checkbox"  
+                name="Task completed"
+                id="check"
+                value="on"
+            >
+            <label for="check">Task Completed</label>
+        </div>
+
+        <div class="not_check">
+            <input 
+                type="checkbox"  
+                name="Task not completed"
+                id="not_check"
+                value="on"
+            >
+            <label for="not_check">Task Not Completed</label>
+        </div>
+
+        <button onclick="filterTodos()">Filter</button>
+        
+    </div>
+
+    <table id="todos_table" width="100%">
+        <thead>
+            <tr>
+                <th>Task</th>
+                <th>Task Description</th>
+            </tr>
+        </thead>
+
+        <tbody>
+
+            {% for todo in todos %}
+                <tr>
+                    <td>
+                        {% if todo.completed %}
+                            <img data-completed={{todo.completed}} src="check.png" alt="Check Image">
+                        {% else %}
+                            <img data-completed={{todo.completed}} src="not_check.jpg" alt="Not Check Image">
+                        {% endif %}
+                    </td>
+                    <td>{{todo.title}}</td>
+                </tr>
+                     
+            {% endfor %}            
+            
+        </tbody>
+    </table>
+</div>
+
+
+{% endblock content%}
+
